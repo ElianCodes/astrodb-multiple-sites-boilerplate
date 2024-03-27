@@ -1,0 +1,39 @@
+---
+import { graphql } from "gql.tada";
+import { Client, fetchExchange } from "urql";
+
+const client = new Client({
+	url: `${import.meta.env.API_URL}/api/graphql`,
+	exchanges: [fetchExchange],
+});
+
+const query = graphql(`
+	query post {
+		post {
+			title
+		}
+	}
+`);
+
+const { data, error } = await client.query(query, {}).toPromise();
+const posts = data?.post;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Client</title>
+	</head>
+	<body>
+		<h1>Hello from client</h1>
+		<p>I fetch the posts from the Server</p>
+		<ul>
+			{posts?.map((post) => (
+				<li>{post.title}</li>
+			))}
+		</ul>
+	</body>
+</html>

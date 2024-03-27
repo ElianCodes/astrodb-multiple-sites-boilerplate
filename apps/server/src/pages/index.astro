@@ -1,0 +1,24 @@
+---
+import { db, Post } from "astro:db";
+const posts = await db.select().from(Post);
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Server</title>
+	</head>
+	<body>
+		<h1>Hello from the Server</h1>
+		<p>I fetch the posts from Astro DB</p>
+		<ul>
+			{ posts.map((post) => (
+					<li>{post.title}</li>
+				))
+			}
+		</ul>
+	</body>
+</html>

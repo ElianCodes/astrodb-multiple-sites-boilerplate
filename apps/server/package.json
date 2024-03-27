@@ -1,0 +1,22 @@
+{
+  "name": "server",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.5.10",
+    "@astrojs/db": "^0.9.4",
+    "@astrojs/node": "^8.2.5",
+    "@graphql-tools/schema": "^10.0.3",
+    "astro": "^4.5.9",
+    "graphql": "^16.8.1",
+    "graphql-yoga": "^5.2.0",
+    "typescript": "^5.4.3"
+  }
+}
